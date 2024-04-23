@@ -9,7 +9,7 @@ const link = [
   { name: "Home", href: "/" },
   { name: "Men", href: "/Men" },
   { name: "Women", href: "/Women" },
-  { name: "Teen", href: "/Teen" },
+  { name: "Footware", href: "/Teen" },
 ];
 
 export default function Navbar() {
