@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 async function getData() {
-  const query = `*[_type == 'product'][0...3] | order(_createdAt desc)
+  const query = `*[_type == 'product'][0...4] | order(_createdAt desc)
 {
   _id,
     name,

@@ -46,6 +46,7 @@ export default {
           type: 'category',
         },
       ],
+      __experimental_actions: ['update', 'publish', 'create', 'delete'],
     },
   ],
 }

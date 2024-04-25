@@ -3,8 +3,8 @@ import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
 import Image from "next/image";
 
-async function getData(cateogry: string) {
-  const query = `*[_type == "product" && category->name == "${cateogry}"] {
+async function getData(category: string) {
+  const query = `*[_type == "product" && category->name == "${category}"] {
         _id,
           "imageUrl": images[0].asset->url,
           price,
@@ -40,28 +40,32 @@ export default async function CategoryPage({
           {data.map((product) => (
             <div key={product._id} className="group relative">
               <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
-                <Image
-                  src={product.imageUrl}
-                  alt="Product image"
-                  className="w-full h-full object-cover object-center lg:h-full lg:w-full"
-                  width={300}
-                  height={300}
-                />
+                {product.imageUrl ? (
+                  <Image
+                    src={product.imageUrl}
+                    alt="Product image"
+                    className="w-full h-full object-cover object-center lg:h-full lg:w-full"
+                    width={300}
+                    height={300}
+                  />
+                ) : (
+                  <div>No image available</div>
+                )}
               </div>
 
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-gray-700">
                     <Link href={`/product/${product.slug}`}>
-                      {product.name}
+                      {product.name || "Unknown Product"}
                     </Link>
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">
-                    {product.categoryName}
+                    {product.categoryName || "Unknown Category"}
                   </p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
-                  ${product.price}
+                  {product.price ? `$${product.price}` : "Price not available"}
                 </p>
               </div>
             </div>

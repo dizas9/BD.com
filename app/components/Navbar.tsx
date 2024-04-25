@@ -2,8 +2,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ShoppingBasket } from "lucide-react";
+import { ShoppingBasket, User } from "lucide-react";
 import { useShoppingCart } from "use-shopping-cart";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import { Logout } from "./Logout";
 
 const link = [
   { name: "Home", href: "/" },
@@ -14,6 +17,7 @@ const link = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { data: session } = useSession();
   const { handleCartClick } = useShoppingCart();
   return (
     <header className="mb-8 border-b">
@@ -61,6 +65,42 @@ export default function Navbar() {
               Cart
             </span>
           </Button>
+        </div>
+
+        {/* Accounts */}
+        <div className="flex items-center">
+          {session?.user ? (
+            <div className="flex lg:flex-col items-center gap-2">
+              <Link href={`/users/${session.user.id}`}>
+                {session.user.image ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-10 rounded-full overflow-hidden">
+                      <Image
+                        src={session.user.image}
+                        alt={session.user.name!}
+                        width={40}
+                        height={40}
+                        className="scale-animation img"
+                      />
+                    </div>
+                    <p className="lg:flex hidden text-sm text-gray-500">
+                      {session ? `Hi ,${session.user.name}` : `Session Expired`}
+                    </p>
+                  </div>
+                ) : (
+                  <User className="cursor-pointer" />
+                )}
+              </Link>
+              <Logout />
+            </div>
+          ) : (
+            <Link href="/auth">
+              <div className="flex items-center gap-2">
+                <User className="cursor-pointer" />
+                <p className="lg:flex none">Login</p>
+              </div>
+            </Link>
+          )}
         </div>
       </div>
     </header>
