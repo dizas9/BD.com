@@ -29,7 +29,7 @@ const UserDetails = async ({ params }: { params: { id: string } }) => {
           </h2>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        {/* <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {data.map((person: any) => (
             <div key={person._id} className="group relative">
               <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
@@ -58,7 +58,7 @@ const UserDetails = async ({ params }: { params: { id: string } }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -66,12 +66,4 @@ const UserDetails = async ({ params }: { params: { id: string } }) => {
 
 export default UserDetails;
 
-{
-  /* <Image
-              src={data.image}
-              alt={data.name}
-              width={143}
-              height={143}
-              className="img scale-animation rounded-full"
-            /> */
-}
+
