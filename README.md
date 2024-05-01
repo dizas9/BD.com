@@ -36,6 +36,7 @@
 - **Payment Gatway** [Stripe](https://stripe.com)
 - **UI System:** [Shadcn UI](https://ui.shadcn.com/)
 - **Hosting:** [Vercel](https://vercel.com)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
 
 
 
