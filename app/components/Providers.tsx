@@ -20,3 +20,9 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     </USCProvider>
   );
 }
+
+//https://bd-com.vercel.app/stripe/success
+//https://bd-com.vercel.app/stripe/error
+
+//http://localhost:3000/stripe/success
+//http://localhost:3000/stripe/error
