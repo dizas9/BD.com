@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="bg-gray-900">
+    <div className="bg-gray-900 ">
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
@@ -67,7 +67,6 @@ export default function Footer() {
             </a>
             . All Rights Reserved.
           </span>
-
         </div>
       </div>
     </div>
